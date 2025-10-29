@@ -64,6 +64,10 @@
       50% { transform: translateX(-50%) translateY(20px); }
       100% { transform: translateX(-50%) translateY(0); }
     }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
     section {
       padding: 3rem 2rem;
       text-align: center;
@@ -84,66 +88,6 @@
     <a href="#scan" class="cta">Start Your Scan</a>
   </header>
 
-  <section id="scan">
-    <h2>Initiating Deep Web Scan...</h2>
-    <div id="scanOutput" style="font-size:1.2rem; line-height:1.6; min-height:100px;"></div>
-    <div style="margin-top:2rem;">
-      <div style="width:80%; margin:0 auto; background:#222; border-radius:10px;">
-        <div id="progressBar" style="width:0%; height:20px; background:#00f5ff; border-radius:10px;"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="threatLevel">
-    <h2>Threat Level</h2>
-    <div style="width:80%; margin:1rem auto; background:#222; border-radius:10px;">
-      <div id="threatBar" style="width:0%; height:20px; background:#ff0044; border-radius:10px;"></div>
-    </div>
-    <p id="threatLabel" style="margin-top:1rem; font-weight:bold;"></p>
-  </section>
-
-  <section id="personaReveal"></section>
-
-  <section id="badges">
-    <h2>Unlocked Badges</h2>
-    <div id="badgeList" style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;"></div>
-  </section>
-
-  <section id="upgrade" style="background:#111;">
-    <h2>Choose Your Defence Tier</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem;">
-      <div>
-        <h3>🛡️ Basic Scan</h3>
-        <p>Surface web only. One-time report.</p>
-        <strong>$9</strong>
-      </div>
-      <div>
-        <h3>🕵️ Full Exposure</h3>
-        <p>Surface + Deep + Dark Web. Monthly updates.</p>
-        <strong>$29</strong>
-      </div>
-      <div>
-        <h3>👻 Dark Web Defense</h3>
-        <p>Real-time alerts. AI shielding. Full anonymization.</p>
-        <strong>$59</strong>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const output = document.getElementById("scanOutput");
-    const progressBar = document.getElementById("progressBar");
-    const threatBar = document.getElementById("threatBar");
-    const threatLabel = document.getElementById("threatLabel");
-    const badgeList = document.getElementById("badgeList");
-    const personaReveal = document.getElementById("personaReveal");
-
-    const traces = [
-      "🔍 Surface Web: Email address found on public forums",
-      "🔍 Deep Web: Username linked to leaked credentials",
-      "🔍 Dark Web: Phone number listed in breach archive",
-      "🔍 Social Graph: Location data inferred from photo metadata",
-      "🔍 AI Analysis: Behavioral fingerprint matched to 3 profiles"
-    ];
-
-    const personas
+  <div id="loading" style="display:none; text-align:center; padding:2rem;">
+    <div style="margin:auto; width:60px; height:60px; border:6px solid #00f5ff; border-top:6px solid transparent; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    <p style="margin-top:1rem;">Scanning your digital footprint...</p>
