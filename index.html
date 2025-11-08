@@ -195,4 +195,55 @@
       threatBar.style.width = `${score}%`;
       if (score < 30) threatLabel.textContent = "🟢 Low Risk";
       else if (score < 70) threatLabel.textContent = "🟠 Moderate Risk";
+            else threatLabel.textContent = "🔴 High Risk";
+    }
+
+    function revealPersona() {
+      const persona = personas[Math.floor(Math.random() * personas.length)];
+      personaReveal.innerHTML = `
+        <h2>Persona Reveal</h2>
+        <div style="background:#222; padding:1rem; border-radius:10px;">
+          <p><strong>${persona.name}</strong></p>
+          <p>${persona.traits}</p>
+          <p>Recommended Tier: <em>${persona.tier}</em></p>
+        </div>
+      `;
+    }
+
+    function unlockBadges() {
+      badgeList.innerHTML = "";
+      const unlocked = badgePool.sort(() => 0.5 - Math.random()).slice(0, 3);
+      unlocked.forEach(badge => {
+        const badgeEl = document.createElement("div");
+        badgeEl.style.background = "#222";
+        badgeEl.style.padding = "1rem";
+        badgeEl.style.borderRadius = "10px";
+        badgeEl.innerHTML = `<p style="font-size:2rem;">${badge.emoji}</p><p>${badge.name}</p>`;
+        badgeList.appendChild(badgeEl);
+
+        // Floating emoji effect
+        const floaty = document.createElement("div");
+        floaty.textContent = badge.emoji;
+        floaty.style.position = "fixed";
+        floaty.style.left = `${Math.random() * 100}%`;
+        floaty.style.top = "100%";
+        floaty.style.fontSize = "2rem";
+        floaty.style.animation = "floatUp 3s ease-out forwards";
+        document.body.appendChild(floaty);
+        setTimeout(() => floaty.remove(), 3000);
+      });
+    }
+
+    document.querySelector(".cta").addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("scanSound").play();
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        revealTrace();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
      
